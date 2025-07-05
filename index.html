@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=2000, initial-scale=1" />
+    <title>Visualising Democratic Backslidng</title>
+
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/topojson-client@3"></script>
+    <script src="js/main.js" type="module" defer></script>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+    rel="stylesheet"
+    />
+    
+
+</head>
+<body class="bg-dark text-light">
+    <div id="introduction" class="">
+            <!-- Text column -->
+            <div id="text-intro">
+                <h1 class="display-5" id="headlineIntro">Understanding Global Democratic Backsliding</h1>
+                <p class="lead">
+                    In recent years, democratic institutions around the world have faced unprecedented challenges. 
+                    With shifting political and social climates, an overwhelming number of countries are facing an erosion in their democratic nature and principles. 
+                    This phenomenon, known as <i>Democratic Backsliding</i> has unfortunately been the hallmark of the 21st century.
+                </p>
+                <p>
+                    In the form of protests, and activism, citizens of the world have resisted this unwelcome change. Through the following
+                    visualizations I aim to present the data surrounding such protests (acquired from <a href="https://carnegieendowment.org/features/global-protest-tracker?lang=en"> Carnegie Endowment's Global Protest Tracker</a>), and compare it with the democratic indicators
+                    for all these countries (acquired from <a href="https://v-dem.net/data/the-v-dem-dataset/">V-Dem Democracy Indicators</a> dataset).
+                </p>
+
+                <p><span class="data-hints">Scroll down to begin exploring!</span></p>
+            </div>
+            <!-- Image column -->
+            <div id="img-intro">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Discurso_funebre_pericles.PNG" alt="Pericles's Funeral Oration " id="hero-image">
+                <imgcaption>Pericles's Funeral Oration</imgcaption>
+                By <a href="https://en.wikipedia.org/wiki/en:Philipp_Foltz" class="extiw" title="w:en:Philipp Foltz"><span title="German history painter (1805–1877)">Philipp Foltz</span></a> - Private Collection <a rel="nofollow" class="external free" href="https://www.rijksmuseum.nl/en/collection/RP-F-2001-7-864-5">https://www.rijksmuseum.nl/en/collection/RP-F-2001-7-864-5</a>, Public Domain, <a href="https://commons.wikimedia.org/w/index.php?curid=7725777">Link</a>
+            </div>
+    </div>
+
+    <main>
+        <div id="vis-1-intro">
+            <div  id="scatter-vis">
+                <h2>Democracy Score vs. Protest Count</h2>
+                <!-- Scatter slider -->
+                <div class="scatter-controls mb-2">
+                    <label for="scatterYearSlider">Year:</label>
+                    <input id="scatterYearSlider" type="range" min="2017" max="2024" value="2017" step="1">
+                    <span id="scatterLabel">2017</span>
+                    <button id="scatterPlayBtn" class="btn-play">▶️</button>
+                </div>
+                <div id="scatter" class="mx-auto"></div>
+                <!-- Tooltip for scatter -->
+                <div id="scatter-tooltip" class="tooltip hidden"></div>
+            </div>
+
+            <div id="scatter-intro">
+                <h2>Where do Democracy and Dissent meet?</h2>
+                <p>
+                    Using this bubble plot, you can see the <b>ifs?</b> and <b>hows?</b> of dissent in each country. 
+                    The size of the bubbles represent the number of people protesting. 
+                </p>
+                <p>Moving through the years, using the ▶️ button, see how the trends in dissent and democracy compliment each other</p>
+                <p><span class="data-hints">Click on a bubble to follow its democratic journey</span></p>
+            </div>
+
+            <div id="sankey-vis">
+                <h2>
+                    Protest Participants, Motivations and Outcomes: <i><span id="country-name"></span>, <span id="year-sankey"></span></i>
+                </h2>
+                <br>
+                <div id="sankey-container"></div>
+            </div>
+
+            <div id="sankey-intro">
+                <h2>The Reasons and Results </h2>
+                <p>
+                    Through the years, many people rose up to fight for a myriad of reasons, in some cases their actions inspired others,
+                    whereas somewhere else the results of their actions stifled dissent. 
+                </p>
+                </p>
+                    <span class="data-hints">Hover over the links in the diagram beside to see the names of the protest.</span>
+                    <i>Each level in the diagram, shed light
+                    on the people protesting (left), their motivations (middle) and whether they had a significant outcome? (right)</i>
+                </p>
+            </div>
+        </div>
+
+        <div id="world-map-intro">
+            <h2 id="world-map-headline">The Global Democratic Panorama</h2>
+            <span>Use the world map to easily select a country, and see its metrics in any visualisation on this page.</span>
+            <p id="world-map-p">
+                Select any country from the world, by clicking on its map below, and you will be explore the changes in niche democratic indicators using the
+                <span class="data-hints"> sidebar </span>.
+                As you select a country, you will see the <span class="data-hints">bottom bar</span> fill up with protests and civil movements till the year
+                you select using the <span class="data-hints"> timeline slider</span> in the sidebar
+                <br>
+                <br>
+                <span class="data-hints">Clicking on protest will
+                    show you detailed information about it.</span>
+                
+            </p> 
+        </div>
+        <div class="dashboard">
+        <!-- Left column: map and slider -->
+            <br>
+
+            <div class="main-panel">
+                
+                <div id="map"></div>
+                <div id="protest-list" class="protest-list"></div>
+            </div>
+
+            <!-- Right column: sidebar for extra viz or legend -->
+            <div class="sidebar">
+                <div class="controls">
+                    <label for="yearSlider">Year:</label>
+                    <input id="yearSlider" type="range" min="2017" max="2024" value="2017">
+                    <span id="yearLabel">2017</span>
+                    <button id="playBtn" class="btn-play">▶️</button>
+                </div>
+                <!-- ridgeline -->
+                <h4>Indicator Scores</h4>
+                <p class="small text-muted">
+                These lines show the 5 institutional indicators (0–1 scale) for the selected country.
+                Higher scores mean stronger democratic performance 
+                in that dimension.
+                </p>
+                <div id="linechart"></div>
+                <br>
+                <div id="suggestions">
+                    <h4>Interesting Countries</h4>
+                    <ul>
+                        <li>Thailand - reversing Democratic Backsliding</li>
+                        <li>Brazil - reversing Democratic Backsliding</li>
+                        <li>France - highest number of protests</li>
+                        <li>India - highest number of protests in the Eastern Hemisphere</li>
+                        <li>Afghanistan - facing heavy Democratic Backsliding</li>
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <div id="drawer" class="drawer closed">
+        <button id="closeDrawer">×</button>
+        <div id="drawerContent" class="drawer-content"></div>
+    </div>
+    
+</body>
+</html>
