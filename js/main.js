@@ -32,6 +32,7 @@ import { renderLineChart } from "./linechart.js";
 let currentYear = 2017;
 let selectedCountry = null;
 
+
 function selectCountry(country, protestsByCountry, demByCountry, colorScale, protestData, mapSvg, year) {
     selectedCountry = country;
     currentYear = year;

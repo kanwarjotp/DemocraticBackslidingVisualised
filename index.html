@@ -45,6 +45,13 @@
     </div>
 
     <main>
+        <script>
+            const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+            if (isMobile) {
+                alert("You're using a mobile device. Some features may be better on desktop.");
+            }
+        </script>
+        
         <div id="vis-1-intro">
             <div  id="scatter-vis">
                 <h2>Democracy Score vs. Protest Count</h2>
