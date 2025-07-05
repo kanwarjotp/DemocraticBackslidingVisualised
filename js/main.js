@@ -147,6 +147,18 @@ loadData()
                 });
             }
         });
+
+        // interesting countries controls
+        d3.selectAll("#suggested-countries li")
+            .style("cursor", "pointer")
+            .on("click", function () {
+                const country = d3.select(this).attr("data-country");
+                if (!country) return;
+
+                selectedCountry = country;
+                updateProtestList("#protest-list", protestsByCountry, country, currentYear, showDrawer);
+                selectCountry(selectedCountry, protestsByCountry, demByCountry, colorScale, protestData, svg, currentYear);
+            });
         //scatter controls
         initControls({
             sliderSelector: "#scatterYearSlider",
