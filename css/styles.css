@@ -13,11 +13,31 @@ body {
   font-size: xxx-large;
 }
 
+nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+
+  background-color: #041a2a;
+  min-height: 30px;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+
+
 #introduction{
   display: flex;
+  height: fit-content;
+  padding-bottom: 20px;
   height: 90vh;
-  min-width: 100vw;
-  flex-direction: row;
+  width: 100vw;
+  flex-direction: row; /* decides direction of flow*/
+  flex-wrap: wrap; 
   justify-content: center;
 }
 
@@ -32,10 +52,9 @@ a {
   flex-direction: column;
   flex-wrap: wrap;
   align-self: center;
-
   flex-shrink: 3;
   padding-left: 10px;
-  padding-right: 30px;
+  padding-right: 10px;
 
 }
 
@@ -45,100 +64,174 @@ a {
   align-self: center;
 
   padding-right: 10px;
-  padding-right: 10px;
+  padding-left: 10px;
 
 }
 
 #hero-image {
-  width: 500px;
+  max-width: 500px;
   height: auto;
 }
 
-#vis-1-intro {
-  display: grid;
-  grid-template-columns: 12vw 40vw 20px 40vw 5vw;
-  grid-template-rows: 220px 320px 200px 100px;
-  height: fit-content;
-  min-width: 100vw;
-  /* column-gap:20px; */
+
+@media screen and (min-wdith:1040px) {
+  /* after this the rows start wrappping in teh subsequent visualisation */
   
 }
 
-#scatter-vis {
-  width: 650px;
-  height: 500px;
-  padding-right: 10px;
-  padding-right: 10px;
-  grid-row: 1/3;
-  grid-column: 2/3;
-
-
+#vis-1-intro {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: fit-content;
+  min-width: 100vw;
+  padding-bottom: 20px;
+  justify-content: center;
+  /* column-gap:20px; */
+  
 }
 
 #scatter-intro {
   width: 500px;
   height: min-content;
-  /* padding-left: 20px;
-  padding-right: 10px; */
-  grid-row: 1/2;
-  grid-column: 4/5;
-
+  min-width: 0;
+  padding-right: 10px;
+  padding-left: 10px;
 }
+
+
+#scatter-vis {
+  width: 500px;
+  height: fit-content;
+  min-width: 0;
+  flex-shrink: 1;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
 
 .data-hints {
   font-weight: bold;
 }
 
-#sankey-vis {
-  width: 500px;
-  margin: 0 ;
-  /* align-self: flex-end; */
-  grid-row: 2/3;
-  grid-column: 4/5;
-  /* padding-left: 20px; */
+#spacer {
+  height: 10vh;
+}
+
+#vis-1-b {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: fit-content;
+  min-width: 100vw;
+  padding-bottom: 20px;
+  justify-content: center;
 }
 
 #sankey-intro {
-  max-width: 600px;
-  min-height: fit-content;
+  width: 500px;
+  height: min-content;
+  min-width: 0;
+  padding-right: 10px;
+  padding-left: 10px;
+}
 
-  grid-column: 2/3;
-  grid-row: 3/4;
+#sankey-vis {
+  width: 500px;
+  margin: 0 ;
+  min-width: 0;
+  flex-shrink: 1;
+  padding-right: 10px;
+  padding-left: 10px;
 
 }
 
-#world-map-intro {
-  width: 1000px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding-left: 12vw;
+.accessible-slider {
+  display: none;
+}
 
+@media screen and (max-width: 1500px) {
+  /* specific rules for screeens less than 1500px */
+  /* remove the sidebar from display */
+
+  .sidebar {
+    display: none;
+  }
+
+  .accessible-slider {
+    display: flex;
+    width: 100vw;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #accessible-controls {
+    width: 70vw;
+  }
   
 }
 
-#world-map-headline {
-  align-self: flex-start;
+
+@media screen and (max-width: 1200px) {
+  #world-map-intro {
+    padding-top: 2vh;
+  }
 }
 
+@media screen and (max-width: 1100px) {
+  #world-map-intro {
+    padding-top: 15vh;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  #world-map-intro {
+    padding-top: 20vh;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #world-map-intro {
+    padding-top: 25vh;
+  }
+}
+
+
+#world-map-intro {
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: fit-content;
+}
+
+#world-map-p{
+  width: 70vw;
+}
 
 .dashboard {
   display: flex;
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
-
-
+  height: max-content;
+  /* overflow: hidden; */
+  padding-top: 10px;
 }
+
 .main-panel {
   flex: 1;            /* fills left 2/3 (by default) */
   display: flex;
   flex-direction: column;
+  align-items:  center;
   max-width: 100vw;
 }
+
+
 .sidebar {
   width: 400px;       /* fixed sidebar width */
   background: #2b2b2b;
+  height: max-content;
   color: #ddd;
   padding: 16px;
   box-sizing: border-box;
@@ -170,10 +263,6 @@ a {
 }
 
 
-#map svg {
-  background-color: #2b2b2b;   /* slightly lighter dark for map pane */
-  border: 1px solid #444;      /* subtle border */
-}
 
 /*  Countries stroke */
 path.country {
@@ -188,7 +277,6 @@ path.country.highlighted {
   cursor: pointer;
   z-index: 1000;
 }
-
 
 .map-tooltip {
   z-index: 1000;
@@ -235,7 +323,7 @@ input[type="range"] {
 /* Protest strip container */
 .protest-list {
   width: 100%;
-  min-height: 170px;
+  flex-grow: 1;
   background: #2b2b2b;
   display: flex;
   flex-wrap: wrap;
@@ -407,14 +495,4 @@ circle.country.highlighted {
 }
 #suggested-countries li:hover {
   background-color: rgba(255, 255, 255, 0.1);
-}
-
-#git-link {
-  width: 100%;
-  background-color: aliceblue;
-  text-align: center;
-}
-
-#git-text {
-  color: #1e1e1e;
 }
