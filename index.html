@@ -21,9 +21,14 @@
 
 </head>
 <body class="bg-dark text-light">
-    <div id="git-link">
-        <i><a href="https://github.com/kanwarjotp/DemocraticBackslidingVisualised"><span id="git-text">see the code - github repository </span></a></i>
-    </div>
+
+    <nav>
+        <a href="#sankey-vis">Protests Motivations Spotlight</a>
+        <a href="#map">Global Dashboard</a>
+        <a href="#scatter-vis">Democracy and its Relation to Protests</a>
+        <a href="https://github.com/kanwarjotp/DemocraticBackslidingVisualised">GitHub Repository</a>
+    </nav>
+
     <div id="introduction" class="">
             <!-- Text column -->
             <div id="text-intro">
@@ -40,6 +45,7 @@
                 </p>
 
                 <p><span class="data-hints">Scroll down to begin exploring!</span></p>
+                <p><span class="data-hints"><u><a href="#map">Skip to Global Dashboard</a></u> </span></p>
             </div>
             <!-- Image column -->
             <div id="img-intro">
@@ -57,9 +63,22 @@
             }
         </script>
 
-        <div id="vis-1-intro">
+        <div id="vis-1-b">
+              <div id="scatter-intro">
+                <h2>Where do Democracy and Dissent meet?</h2>
+                <p>
+                    Using this bubble plot, you can see the <b>ifs?</b> and <b>hows?</b> of dissent in each country. 
+                    The size of the bubbles represent the number of people protesting. 
+                </p>
+                <p>Moving through the years, using the ▶️ button, see how the trends in dissent and democracy compliment each other</p>
+                <p><span class="data-hints">Click on a bubble to follow its democratic journey</span></p>
+
+                <p>
+                    By 2024, a curve can be discerned, associating high protests figures to positive democratic instituions.
+                </p>
+            </div>
+
             <div  id="scatter-vis">
-                <h2>Democracy Score vs. Protest Count</h2>
                 <!-- Scatter slider -->
                 <div class="scatter-controls mb-2">
                     <label for="scatterYearSlider">Year:</label>
@@ -71,25 +90,11 @@
                 <!-- Tooltip for scatter -->
                 <div id="scatter-tooltip" class="tooltip hidden"></div>
             </div>
+        </div>
 
-            <div id="scatter-intro">
-                <h2>Where do Democracy and Dissent meet?</h2>
-                <p>
-                    Using this bubble plot, you can see the <b>ifs?</b> and <b>hows?</b> of dissent in each country. 
-                    The size of the bubbles represent the number of people protesting. 
-                </p>
-                <p>Moving through the years, using the ▶️ button, see how the trends in dissent and democracy compliment each other</p>
-                <p><span class="data-hints">Click on a bubble to follow its democratic journey</span></p>
-            </div>
+        <div id="spacer"></div>
 
-            <div id="sankey-vis">
-                <h2>
-                    Protest Participants, Motivations and Outcomes: <i><span id="country-name"></span>, <span id="year-sankey"></span></i>
-                </h2>
-                <br>
-                <div id="sankey-container"></div>
-            </div>
-
+        <div id="vis-1-intro">
             <div id="sankey-intro">
                 <h2>The Reasons and Results </h2>
                 <p>
@@ -101,35 +106,56 @@
                     <i>Each level in the diagram, shed light
                     on the people protesting (left), their motivations (middle) and whether they had a significant outcome? (right)</i>
                 </p>
+
+                <p>
+                Protest Participants, Motivations and Outcomes: <b><span class="data-hints" id="country-name"></span>, <span class="data-hints" id="year-sankey"></span></b>
+                </p>
+            </div>
+
+            <div id="sankey-vis">
+                <br>
+                <div id="sankey-container"></div>
             </div>
         </div>
 
+
         <div id="world-map-intro">
-            <h2 id="world-map-headline">The Global Democratic Panorama</h2>
-            <span>Use the world map to easily select a country, and see its metrics in any visualisation on this page.</span>
-            <p id="world-map-p">
+            <div class="map-text" id="world-map-headline">
+                <h2>
+                The Global Panorama
+                </h2>
+            </div>
+            <div class="map-text" id="world-map-p">
+                <p>
+                <span>Use the world map to easily select a country, and see its metrics in any visualisation on this page.</span>
+
                 Select any country from the world, by clicking on its map below, and you will be able to explore the changes in niche democratic indicators using the
                 <span class="data-hints"> sidebar </span>.
+                <br>
+                <br>
                 As you select a country, you will see the <span class="data-hints">bottom bar</span> fill up with protests and civil movements till the year
                 you select using the <span class="data-hints"> timeline slider</span> in the sidebar
                 <br>
                 <br>
-                <span class="data-hints">Clicking on protest will
-                    show you detailed information about it.</span>
-                
-            </p> 
+                <span class="data-hints">
+                    Clicking on a protest pill will show you detailed information about it.
+                </span> 
+                </p> 
+            </div> 
         </div>
-        <div class="dashboard">
-        <!-- Left column: map and slider -->
-            <br>
 
-            <div class="main-panel">
-                
-                <div id="map"></div>
-                <div id="protest-list" class="protest-list"></div>
+        <div class="accessible-slider">
+            <div class="controls" id="accessible-controls">
+                <label for="yearSlider">Year:</label>
+                <input id="yearSlider" type="range" min="2017" max="2024" value="2017">
+                <span id="yearLabel">2017</span>
+                <button id="playBtn" class="btn-play">▶️</button>
             </div>
+        </div>
 
-            <!-- Right column: sidebar for extra viz or legend -->
+
+
+        <div class="dashboard">
             <div class="sidebar">
                 <div class="controls">
                     <label for="yearSlider">Year:</label>
@@ -146,7 +172,7 @@
                         <li data-country="Brazil">Brazil - reversing Democratic Backsliding</li>
                         <li data-country="France">France - highest number of protests</li>
                         <li data-country="India">India - highest number of protests in the Eastern Hemisphere</li>
-                        <li data-country="Afghanistan">Afghanistan - facing heavy Democratic Backsliding</li>
+                        <li data-country="Afghanistan">Afghanistan - facing acute Democratic Backsliding</li>
                     </ul>
                 </div>
                 <!-- ridgeline -->
@@ -158,6 +184,11 @@
                 </p>
                 <div id="linechart"></div>
             </div>
+            <div class="main-panel">
+                
+                <div id="map"></div>
+                <div id="protest-list" class="protest-list"></div>
+            </div>            
         </div>
     </main>
 
