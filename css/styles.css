@@ -25,6 +25,7 @@ nav {
 
   a {
     text-decoration: none;
+    padding: 5px
   }
 }
 
@@ -33,8 +34,9 @@ nav {
 #introduction{
   display: flex;
   height: fit-content;
-  padding-bottom: 20px;
-  height: 90vh;
+  padding-top: 10vw;
+  padding-bottom: 15vw;
+  height: max-content;
   width: 100vw;
   flex-direction: row; /* decides direction of flow*/
   flex-wrap: wrap; 
@@ -74,9 +76,11 @@ a {
 }
 
 
-@media screen and (min-wdith:1040px) {
+@media screen and (max-width:1040px) {
   /* after this the rows start wrappping in teh subsequent visualisation */
-  
+  #introduction {
+    padding-bottom: 25vh;
+  }
 }
 
 #vis-1-intro {
