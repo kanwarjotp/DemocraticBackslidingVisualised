@@ -147,8 +147,16 @@ a {
 }
 
 .accessible-slider {
-  display: none;
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  align-items: center;
 }
+
+#accessible-controls {
+  width: 70vw;
+}
+  
 
 @media screen and (max-width: 1500px) {
   /* specific rules for screeens less than 1500px */
@@ -157,18 +165,6 @@ a {
   .sidebar {
     display: none;
   }
-
-  .accessible-slider {
-    display: flex;
-    width: 100vw;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  #accessible-controls {
-    width: 70vw;
-  }
-  
 }
 
 
