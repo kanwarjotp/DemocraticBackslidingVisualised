@@ -25,8 +25,7 @@ nav {
 
   a {
     text-decoration: none;
-    padding-bottom: 5px;
-    padding-top: 5px;
+    padding: 5px
   }
 }
 
@@ -163,7 +162,7 @@ a {
 }
   
 
-@media only screen and (max-width: 1500px) {
+@media only screen and (max-device-width: 1500px) {
   /* specific rules for screeens less than 1500px */
   /* remove the sidebar from display */
 
@@ -173,25 +172,25 @@ a {
 }
 
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-device-width: 1200px) {
   #world-map-intro {
     padding-top: 2vh;
   }
 }
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-device-width: 1100px) {
   #world-map-intro {
     padding-top: 15vh;
   }
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-device-width: 750px) {
   #world-map-intro {
     padding-top: 20vh;
   }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-device-width: 500px) {
   #world-map-intro {
     padding-top: 25vh;
   }
