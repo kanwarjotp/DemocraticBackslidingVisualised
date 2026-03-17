@@ -76,10 +76,10 @@ a {
 }
 
 
-@media only screen and (max-device-width:1040px) {
+@media screen and (max-width:1040px) {
   /* after this the rows start wrappping in teh subsequent visualisation */
-  #introduction{
-    padding-bottom: 30vh;
+  #introduction {
+    padding-bottom: 25vh;
   }
 }
 
