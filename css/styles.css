@@ -29,6 +29,18 @@ nav {
   }
 }
 
+.text-credit {
+  width: 100vw;
+  background-color: #ddd;
+  color: black;
+  text-align: center;
+
+  a {
+    color: #1e1e1e;
+    text-decoration: none;
+  }
+}
+
 
 
 #introduction{
