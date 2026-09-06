@@ -1,6 +1,6 @@
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 import { feature } from "https://cdn.jsdelivr.net/npm/topojson-client@3/+esm";
-
+import { geoEckert4 } from "https://cdn.jsdelivr.net/npm/d3-geo-projection@4/+esm";
 
 export const width  = 1100;
 export const height = 650;
@@ -78,9 +78,9 @@ mapTooltip.style("display", "none");
         .style("stroke-width", 0.3);
 }
 
-export const projection = d3.geoMercator()
-  .scale(175)
-  .translate([width / 2, height / 1.5]);
+export const projection = d3.geoNaturalEarth1()
+  .scale(225)
+  .translate([width / 2.25, height / 1.5]);
 
 // geopath
 export const path = d3.geoPath(projection);
